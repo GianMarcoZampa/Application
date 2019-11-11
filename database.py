@@ -6,6 +6,13 @@ class DataBase:
 
     # This method is called by the constructor and loads stored data in users variable
     def load(self):
+        # Creating the db file if it doesn't exists
+        try:
+            f = open(self.file_name)
+        except FileNotFoundError:
+            f = open(self.file_name, "w")
+        f.close()
+
         with open(self.file_name, "r") as f:
             lines = f.readlines()
 
@@ -56,3 +63,15 @@ class DataBase:
             for user in self.users.items():
                 line = user[0] + ";" + user[1] + ";" + user[3] + "\n"
                 f.write(line)
+
+    # This method validates an user if password associated is correct else return false
+    def validate(self, email, password):
+        if email in self.users:
+            if password is self.users[email][1]:
+                return True
+            else:
+                print("Wrong password")
+                return False
+        else:
+            print("Incorrect email")
+            return False
