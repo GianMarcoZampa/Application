@@ -11,7 +11,9 @@ kv = Builder.load_file("draw.kv")
 sm = ScreenManager()
 db = DataBase("user.txt")
 
-screens = [LoginWindow(name="login", database=db, screen_manager=sm), RegisterWindow(name="register"), MainWindow(name="main")]
+screens = [LoginWindow(name="login", database=db, screen_manager=sm),
+           RegisterWindow(name="register", database=db, screen_manager=sm),
+           MainWindow(name="main")]
 for screen in screens:
     sm.add_widget(screen)
 sm.current = "login"

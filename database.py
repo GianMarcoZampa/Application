@@ -19,6 +19,7 @@ class DataBase:
 
             for line in lines:
                 email, nickname, password = line.split(";", 3)
+                password = password.split("\n")[0]
                 self.users[email] = [nickname, password]
 
     # This method returns the user data if it already exists else false
@@ -62,13 +63,14 @@ class DataBase:
     def save(self):
         with open(self.file_name, "w") as f:
             for user in self.users.items():
-                line = user[0] + ";" + user[1] + ";" + user[3] + "\n"
+                print(user)
+                line = user[0] + ";" + user[1][0] + ";" + user[1][1] + "\n"
                 f.write(line)
 
     # This method validates an user if password associated is correct else return false
     def validate(self, email, password):
         if email in self.users:
-            if password is self.users[email][1]:
+            if password == self.users[email][1]:
                 return True
             else:
                 print("Wrong password")

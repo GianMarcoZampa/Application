@@ -60,3 +60,86 @@
             on_release:
                 root.manager.transition.direction = "right"
                 root.sign_up()
+
+<RegisterWindow>:
+    name: "register"
+
+    email: email
+    nickname: nickname
+    password: password
+    repeated_password: repeated_password
+
+    FloatLayout:
+        cols: 1
+
+        Label:
+            text: "Register to our application"
+            size_hint: 0.2, 0.2
+            pos_hint: {"center_x": 0.5, "top": 0.85}
+            font_size: (root.width + root.height) * 0.01
+
+        FloatLayout:
+            cols: 2
+
+            Label:
+                text: "Email: "
+                size_hint: 0.09, 0.05
+                pos_hint: {"center_x":0.395, "top":0.7}
+                font_size: (root.width + root.height) * 0.01
+
+            TextInput:
+                id: email
+                size_hint: 0.21, 0.05
+                pos_hint: {"center_x":0.545, "top":0.7}
+                font_size: (root.width + root.height) * 0.01
+                multiline: False
+
+            Label:
+                text: "Nickname: "
+                size_hint: 0.09, 0.05
+                pos_hint: {"center_x":0.395, "top":0.65}
+                font_size: (root.width + root.height) * 0.01
+
+            TextInput:
+                id: nickname
+                size_hint: 0.21, 0.05
+                pos_hint: {"center_x":0.545, "top":0.65}
+                font_size: (root.width + root.height) * 0.01
+                multiline: False
+
+            Label:
+                text: "Password: "
+                size_hint: 0.09, 0.05
+                pos_hint: {"center_x":0.395, "top":0.6}
+                font_size: (root.width + root.height) * 0.01
+
+            TextInput:
+                id: password
+                size_hint: 0.21, 0.05
+                pos_hint: {"center_x":0.545, "top":0.6}
+                font_size: (root.width + root.height) * 0.01
+                multiline: False
+
+            Label:
+                text: "Repeat password: "
+                size_hint: 0.09, 0.05
+                pos_hint: {"center_x":0.395, "top":0.55}
+                font_size: (root.width + root.height) * 0.01
+
+            TextInput:
+                id: repeated_password
+                size_hint: 0.21, 0.05
+                pos_hint: {"center_x":0.545, "top":0.55}
+                font_size: (root.width + root.height) * 0.01
+                multiline: False
+
+        Button:
+            text: "Sign up"
+            size_hint: 0.3, 0.08
+            pos_hint: {"center_x":0.5, "top":0.48}
+            font_size: (root.width + root.height) * 0.01
+            on_release:
+                root.manager.transition.direction = "left"
+                root.sign_up()
+
+
