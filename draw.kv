@@ -90,7 +90,7 @@
 
             TextInput:
                 id: email
-                size_hint: 0.26, 0.05
+                size_hint: 0.26, 1
                 pos_hint: {"center_x":0.57, "top":0.7}
                 font_size: (root.width + root.height) * 0.01
                 multiline: False
@@ -159,3 +159,102 @@
 
 <MainWindow>:
     name: "main"
+
+    current_user: current_user
+
+    FloatLayout:
+        cols:1
+
+        BackgroundWidget:
+            size_hint: 1, 1
+            pos_hint: {"x":0, "top":1}
+
+        Label:
+            text: "Draw It 1.0"
+            pos_hint: {"x":0, "top":1}
+            size_hint: 0.3, 0.05
+            font_size: (root.width + root.height) * 0.02
+
+        Button:
+            text: "Size"
+            pos_hint: {"x":0.3, "top":1}
+            size_hint: 0.1, 0.05
+            font_size: (root.width + root.height) * 0.01
+            color: 0,0,0,1
+            background_color: 0,100,255,1
+
+        TextInput:
+            id: brush_size
+            text: "10"
+            pos_hint: {"x":0.4, "top":1}
+            size_hint: 0.05, 0.05
+            font_size: (root.width + root.height) * 0.01
+            multiline: False
+
+        Button:
+            text: "Color"
+            pos_hint: {"x":0.45, "top":1}
+            size_hint: 0.1, 0.05
+            font_size: (root.width + root.height) * 0.01
+            color: 0,0,0,1
+            background_color: 0,100,255,1
+
+        TextInput:
+            id: r
+            text: "255"
+            pos_hint: {"x":0.55, "top":1}
+            size_hint: 0.05, 0.05
+            font_size: (root.width + root.height) * 0.01
+            multiline: False
+
+        TextInput:
+            id: g
+            text: "0"
+            pos_hint: {"x":0.6, "top":1}
+            size_hint: 0.05, 0.05
+            font_size: (root.width + root.height) * 0.01
+            multiline: False
+
+        TextInput:
+            id: b
+            text: "0"
+            pos_hint: {"x":0.65, "top":1}
+            size_hint: 0.05, 0.05
+            font_size: (root.width + root.height) * 0.01
+            multiline: False
+
+        TextInput:
+            id: a
+            text: "1"
+            pos_hint: {"x":0.7, "top":1}
+            size_hint: 0.05, 0.05
+            font_size: (root.width + root.height) * 0.01
+            multiline: False
+
+        Button:
+            id: current_user
+            pos_hint: {"x":0.75, "top":1}
+            size_hint: 0.25, 0.05
+            font_size: (root.width + root.height) * 0.02
+            text: ""
+            background_color: 0,0,255,1
+
+<BackgroundWidget>:
+    name: "background"
+
+    canvas.before:
+        Color:
+            rgba: 255,255,255,1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+        Color:
+            rgba: 0,0,255,1
+        Rectangle:
+            size: self.width*0.3, self.height*0.05
+            pos: self.x , self.y + self.height*0.95
+        Color:
+            rgba: 0,100,255,1
+        Rectangle:
+            size: self.width*0.7, self.height*0.05
+            pos: self.x + self.width*0.3, self.y + self.height*0.95

@@ -3,6 +3,7 @@ class DataBase:
     def __init__(self, file_name):
         self.file_name = file_name
         self.users = {}
+        self.current_user = ""
         self.load()
 
     # This method is called by the constructor and loads stored data in users variable
@@ -71,6 +72,7 @@ class DataBase:
     def validate(self, email, password):
         if email in self.users:
             if password == self.users[email][1]:
+                self.current_user = email
                 return True
             else:
                 print("Wrong password")
