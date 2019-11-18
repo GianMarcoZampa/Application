@@ -9,11 +9,11 @@ from windows import LoginWindow, RegisterWindow, MainWindow
 
 kv = Builder.load_file("draw.kv")
 sm = ScreenManager()
-db = DataBase("user.txt")
+db = DataBase("user.csv")
 
 screens = [LoginWindow(name="login", database=db, screen_manager=sm),
            RegisterWindow(name="register", database=db, screen_manager=sm),
-           MainWindow(name="main")]
+           MainWindow(name="main", database=db, screen_manager=sm)]
 for screen in screens:
     sm.add_widget(screen)
 sm.current = "login"

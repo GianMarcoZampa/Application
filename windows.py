@@ -67,9 +67,22 @@ class RegisterWindow(Screen):
             pop = InvalidRegistrationPopUp(label_text="Check password spelling")
             pop.popup.open()
 
+    def sign_in(self):
+        self.email.text = ""
+        self.password.text = ""
+        self.repeated_password.text = ""
+        self.nickname.text = ""
+        self.sm.current = "login"
+
 
 class MainWindow(Screen):
-    pass
+    def __init__(self, database, screen_manager, **kwargs):
+        super().__init__(**kwargs)
+        self.db = database
+        self.sm = screen_manager
+
+
+
 
 
 class InvalidLoginPopUp:

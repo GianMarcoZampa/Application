@@ -8,7 +8,7 @@
     FloatLayout:
         cols: 1
         Label:
-            text: "Welcome to Draw app 1.0"
+            text: "Draw It 1.0"
             size_hint: 0.3, 0.3
             pos_hint: {"center_x": 0.5, "top": 0.85}
             font_size: (root.width + root.height) * 0.05
@@ -38,6 +38,7 @@
                 size_hint: 0.21, 0.05
                 pos_hint: {"center_x":0.545, "top":0.45}
                 font_size: (root.width + root.height) * 0.01
+                password: True
                 multiline: False
 
         Button:
@@ -76,70 +77,85 @@
             text: "Register to our application"
             size_hint: 0.2, 0.2
             pos_hint: {"center_x": 0.5, "top": 0.85}
-            font_size: (root.width + root.height) * 0.01
+            font_size: (root.width + root.height) * 0.02
 
         FloatLayout:
             cols: 2
 
             Label:
                 text: "Email: "
-                size_hint: 0.09, 0.05
-                pos_hint: {"center_x":0.395, "top":0.7}
+                size_hint: 0.14, 0.05
+                pos_hint: {"center_x":0.37, "top":0.7}
                 font_size: (root.width + root.height) * 0.01
 
             TextInput:
                 id: email
-                size_hint: 0.21, 0.05
-                pos_hint: {"center_x":0.545, "top":0.7}
+                size_hint: 0.26, 0.05
+                pos_hint: {"center_x":0.57, "top":0.7}
                 font_size: (root.width + root.height) * 0.01
                 multiline: False
 
             Label:
                 text: "Nickname: "
-                size_hint: 0.09, 0.05
-                pos_hint: {"center_x":0.395, "top":0.65}
+                size_hint: 0.14, 0.05
+                pos_hint: {"center_x":0.37, "top":0.65}
                 font_size: (root.width + root.height) * 0.01
 
             TextInput:
                 id: nickname
-                size_hint: 0.21, 0.05
-                pos_hint: {"center_x":0.545, "top":0.65}
+                size_hint: 0.26, 0.05
+                pos_hint: {"center_x":0.57, "top":0.65}
                 font_size: (root.width + root.height) * 0.01
                 multiline: False
 
             Label:
                 text: "Password: "
-                size_hint: 0.09, 0.05
-                pos_hint: {"center_x":0.395, "top":0.6}
+                size_hint: 0.14, 0.05
+                pos_hint: {"center_x":0.37, "top":0.6}
                 font_size: (root.width + root.height) * 0.01
 
             TextInput:
                 id: password
-                size_hint: 0.21, 0.05
-                pos_hint: {"center_x":0.545, "top":0.6}
+                size_hint: 0.26, 0.05
+                pos_hint: {"center_x":0.57, "top":0.6}
                 font_size: (root.width + root.height) * 0.01
+                password: True
                 multiline: False
 
             Label:
                 text: "Repeat password: "
-                size_hint: 0.09, 0.05
-                pos_hint: {"center_x":0.395, "top":0.55}
+                size_hint: 0.14, 0.05
+                pos_hint: {"center_x":0.37, "top":0.55}
                 font_size: (root.width + root.height) * 0.01
 
             TextInput:
                 id: repeated_password
-                size_hint: 0.21, 0.05
-                pos_hint: {"center_x":0.545, "top":0.55}
+                size_hint: 0.26, 0.05
+                pos_hint: {"center_x":0.57, "top":0.55}
                 font_size: (root.width + root.height) * 0.01
+                password: True
                 multiline: False
 
         Button:
             text: "Sign up"
-            size_hint: 0.3, 0.08
+            size_hint: 0.4, 0.08
             pos_hint: {"center_x":0.5, "top":0.48}
             font_size: (root.width + root.height) * 0.01
             on_release:
                 root.manager.transition.direction = "left"
                 root.sign_up()
 
+        Button:
+            background_color: 1, 1, 1, 0
+            text: "Sign in"
+            size_hint: 0.3, 0.08
+            pos_hint: {"center_x":0.5, "top":0.3}
+            font_size: (root.width + root.height) * 0.01
+            on_press:
+                color = 0, 0, 1
+            on_release:
+                root.manager.transition.direction = "left"
+                root.sign_in()
 
+<MainWindow>:
+    name: "main"
