@@ -3,7 +3,7 @@ from kivy.uix.screenmanager import Screen
 
 from widgets import BackgroundWidget
 
-from popups import InvalidRegistrationPopUp, InvalidLoginPopUp
+from popups import NotificationPopup, ChoosePopup
 
 
 class LoginWindow(Screen):
@@ -24,8 +24,8 @@ class LoginWindow(Screen):
         else:
             self.email.text = ""
             self.password.text = ""
-            pop = InvalidLoginPopUp()
-            pop.popup.open()
+            pop = NotificationPopup(label="Invalid email or password", title="Invalid login")
+            pop.open()
 
     def sign_up(self):
         self.email.text = ""
@@ -57,12 +57,12 @@ class RegisterWindow(Screen):
                 self.nickname.text = ""
                 self.password.text = ""
                 self.repeated_password.text = ""
-                pop = InvalidRegistrationPopUp(label_text="Email already registered")
-                pop.popup.open()
+                pop = NotificationPopup(label="Email already registered", title="Invalid Registration")
+                pop.open()
         else:
             self.repeated_password.text = ""
-            pop = InvalidRegistrationPopUp(label_text="Check password spelling")
-            pop.popup.open()
+            pop = NotificationPopup(label="Check password spelling", title="Invalid Registration")
+            pop.open()
 
     def sign_in(self):
         self.email.text = ""
@@ -74,6 +74,11 @@ class RegisterWindow(Screen):
 
 class MainWindow(Screen):
     current_user = ObjectProperty(None)
+    r = ObjectProperty(None)
+    g = ObjectProperty(None)
+    b = ObjectProperty(None)
+    a = ObjectProperty(None)
+    brush_size = ObjectProperty(None)
 
     def __init__(self, database, screen_manager, **kwargs):
         super().__init__(**kwargs)
@@ -81,6 +86,18 @@ class MainWindow(Screen):
         self.sm = screen_manager
 
     def set_current_user(self):
-        self.current_user.text = self.db.get(self.db.current_user)[1]
+        print(self.db.current_user)
+        self.current_user.text = "Welcome, " + self.db.get(self.db.current_user)[0] + "!"
 
+    def wait_logout(self):
+        pop = ChoosePopup(label="Do you really want to logout?", title="Logout", on_dismiss=self.logout)
+        pop.open()
 
+    def logout(self, instance):
+        if instance.answer:
+            self.r.text = "0"
+            self.g.text = "0"
+            self.b.text = "0"
+            self.a.text = "1"
+            self.brush_size.text = "10"
+            self.sm.current = "login"

@@ -5,7 +5,7 @@ from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.floatlayout import FloatLayout
 
 from database import DataBase
-from windows import LoginWindow, RegisterWindow, MainWindow
+from screens import LoginWindow, RegisterWindow, MainWindow
 
 kv = Builder.load_file("draw.kv")
 sm = ScreenManager()

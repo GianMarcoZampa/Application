@@ -49,6 +49,7 @@
             on_release:
                 root.manager.transition.direction = "left"
                 root.sign_in()
+                root.manager.get_screen("main").set_current_user()
 
         Button:
             background_color: 1, 1, 1, 0
@@ -90,7 +91,7 @@
 
             TextInput:
                 id: email
-                size_hint: 0.26, 1
+                size_hint: 0.26, 0.05
                 pos_hint: {"center_x":0.57, "top":0.7}
                 font_size: (root.width + root.height) * 0.01
                 multiline: False
@@ -161,6 +162,11 @@
     name: "main"
 
     current_user: current_user
+    r: r
+    g: g
+    b: b
+    a: a
+    brush_size: brush_size
 
     FloatLayout:
         cols:1
@@ -201,7 +207,7 @@
 
         TextInput:
             id: r
-            text: "255"
+            text: "0"
             pos_hint: {"x":0.55, "top":1}
             size_hint: 0.05, 0.05
             font_size: (root.width + root.height) * 0.01
@@ -235,9 +241,12 @@
             id: current_user
             pos_hint: {"x":0.75, "top":1}
             size_hint: 0.25, 0.05
-            font_size: (root.width + root.height) * 0.02
+            font_size: (root.width + root.height) * 0.015
             text: ""
             background_color: 0,0,255,1
+            on_release:
+                root.manager.transition.direction = "right"
+                root.wait_logout()
 
 <BackgroundWidget>:
     name: "background"
