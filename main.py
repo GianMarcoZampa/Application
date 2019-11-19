@@ -2,7 +2,6 @@
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
-from kivy.uix.floatlayout import FloatLayout
 
 from database import DataBase
 from screens import LoginWindow, RegisterWindow, MainWindow

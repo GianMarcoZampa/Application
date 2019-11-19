@@ -167,6 +167,7 @@
     b: b
     a: a
     brush_size: brush_size
+    draw: draw
 
     FloatLayout:
         cols:1
@@ -174,6 +175,11 @@
         BackgroundWidget:
             size_hint: 1, 1
             pos_hint: {"x":0, "top":1}
+
+        DrawWidget:
+            id: draw
+            size_hint: 1, 0.95
+            pos_hint: {"x":0, "y":0}
 
         Label:
             text: "Draw It 1.0"
@@ -188,6 +194,8 @@
             font_size: (root.width + root.height) * 0.01
             color: 0,0,0,1
             background_color: 0,100,255,1
+            on_release:
+                root.change_size()
 
         TextInput:
             id: brush_size
@@ -204,6 +212,8 @@
             font_size: (root.width + root.height) * 0.01
             color: 0,0,0,1
             background_color: 0,100,255,1
+            on_release:
+                root.change_color()
 
         TextInput:
             id: r
@@ -247,6 +257,7 @@
             on_release:
                 root.manager.transition.direction = "right"
                 root.wait_logout()
+
 
 <BackgroundWidget>:
     name: "background"

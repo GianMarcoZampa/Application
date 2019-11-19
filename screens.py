@@ -1,7 +1,7 @@
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import Screen
 
-from widgets import BackgroundWidget
+from widgets import BackgroundWidget, DrawWidget
 
 from popups import NotificationPopup, ChoosePopup
 
@@ -79,6 +79,7 @@ class MainWindow(Screen):
     b = ObjectProperty(None)
     a = ObjectProperty(None)
     brush_size = ObjectProperty(None)
+    draw = ObjectProperty(None)
 
     def __init__(self, database, screen_manager, **kwargs):
         super().__init__(**kwargs)
@@ -101,3 +102,9 @@ class MainWindow(Screen):
             self.a.text = "1"
             self.brush_size.text = "10"
             self.sm.current = "login"
+
+    def change_color(self):
+        self.draw.change_color(self.r.text, self.g.text, self.b.text, self.a.text)
+
+    def change_size(self):
+        self.draw.change_size(self.brush_size.text)
